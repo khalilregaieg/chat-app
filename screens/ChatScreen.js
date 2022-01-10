@@ -6,7 +6,6 @@ import { GiftedChat } from 'react-native-gifted-chat';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { LogBox } from 'react-native';
 import _ from 'lodash';
-import { Audio } from 'expo-av';
 
 
 const ChatScreen = ({ navigation }) => {
@@ -105,70 +104,10 @@ const ChatScreen = ({ navigation }) => {
         });
     }
 
-    async function startRecording() {
-        try {
-            console.log('Requesting permissions..');
-            await Audio.requestPermissionsAsync();
-            await Audio.setAudioModeAsync({
-                allowsRecordingIOS: true,
-                playsInSilentModeIOS: true,
-            });
-            console.log('Starting recording..');
-            const recording = new Audio.Recording();
-            await recording.prepareToRecordAsync(Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY);
-            await recording.startAsync();
-            setRecording(recording);
-            console.log('Recording started');
-        } catch (err) {
-            console.error('Failed to start recording', err);
-        }
-    }
-
-
-    async function stopRecording() {
-        console.log('Stopping recording..');
-        setRecording(undefined);
-        await recording.stopAndUnloadAsync();
-        const uri = recording.getURI();
-        console.log('Recording stopped and stored at', uri);
-        }
-        
-
-        setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
-        const {
-            _id,
-            createdAt,
-            text,
-            user,
-        } = messages[0]
-        db.collection('chats').add({
-            _id,
-            createdAt,
-            text,
-            user,
-        })
-    }
-
-    const playAudio = () => {
-
-    }
-
-
-    const renderAudio = () => {
-        return (
-            <View>
-                <Button title="Audio" onPress={playAudio} />
-            </View>
-        );
-    }
-
     return (
 
         <View style={styles.container}>
-
-
             <GiftedChat
-                renderMessageAudio={renderAudio}
                 messages={messages}
                 showAvatarForEveryMessage={true}
                 onSend={messages => onSend(messages)}
@@ -178,14 +117,6 @@ const ChatScreen = ({ navigation }) => {
                     avatar: auth?.currentUser?.photoURL
                 }}
             />
-
-            <TouchableOpacity
-                onLongPress={startRecording}
-                onPressOut={stopRecording}
-                style={styles.buttonVocal}
-            >
-                <Text>Record</Text>
-            </TouchableOpacity>
         </View>
     )
 }
@@ -194,11 +125,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1
     },
-    buttonVocal: {
-        alignItems: 'center',
-        padding: 10
-
-    }
 })
 
 export default ChatScreen

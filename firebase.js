@@ -3,12 +3,12 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCNuBsed-0_tpNyY57d57rZr16qwRUHoLo",
-    authDomain: "voiceup-83d9e.firebaseapp.com",
-    projectId: "voiceup-83d9e",
-    storageBucket: "voiceup-83d9e.appspot.com",
-    messagingSenderId: "268565842401",
-    appId: "1:268565842401:web:b8ffb01d573bd800c6aaa0"
+    apiKey: "AIzaSyAir6fwvpWUMMRklK_7EaL-aJ33kllh9lk",
+    authDomain: "voiceup-3a49a.firebaseapp.com",
+    projectId: "voiceup-3a49a",
+    storageBucket: "voiceup-3a49a.appspot.com",
+    messagingSenderId: "119111710909",
+    appId: "1:119111710909:web:8f519a2ac8f0ca90535fd4"
 };
 
 let app;
