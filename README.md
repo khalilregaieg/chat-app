@@ -2,6 +2,8 @@
 
 A react native (expo) mobile chat application built using react-native-gifted-chat and firebase.
 
+## 
+
 ## Running the app
 
     git clone https://github.com/khalilregaieg/chat-app
