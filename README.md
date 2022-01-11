@@ -2,7 +2,10 @@
 
 A react native (expo) mobile chat application built using react-native-gifted-chat and firebase.
 
-## 
+## Requirements
+* nodejs
+* npm
+* expo
 
 ## Running the app
 
